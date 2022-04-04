@@ -1,0 +1,15 @@
+---
+ - name: testing handler
+   hosts: localhost
+   become: yes
+   tasks:
+    - name: installing httpd
+      yum:
+        name: httpd
+        state: present
+        notify: starting service
+   handlers:
+     - name: starting service
+       service:
+         name: httpd
+         state: started
