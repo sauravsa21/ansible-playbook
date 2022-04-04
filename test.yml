@@ -1,0 +1,39 @@
+---
+ - hosts: localhost
+   become: yes
+   vars:
+     x: 21
+     y: 25
+   tasks:
+     - name: "working debug module"
+       debug: 
+         msg: 
+           - "welcome to ansible {{x}}"
+           - "testing var by {{y}}"
+             #      - "testing cm {{z}}"
+     - name: "installing httpd"
+       yum:
+           name: "{{ item }}"
+           state: absent
+       with_items:
+            - git
+            - httpd
+     - name: "comparison operator"
+       debug:
+         msg:
+           - "x == y: {{x==y}}"
+           - "x != y: {{x!=y}}"
+           - "x >= y: {{x>=y}}"
+           - "x <= y: {{x<=y}}"
+
+
+             # - name: "checking os"
+             #yum:
+             #name: httpd
+             #state: present
+             # when: ansible_os_family=="RedHat"
+         #    - name: starting httpd
+         #service:
+         # name: httpd
+         # state: started
+         #when: ansible_os_family=="RedHat"

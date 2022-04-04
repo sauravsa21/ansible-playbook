@@ -1,0 +1,6 @@
+---
+ - name: testingrolesss
+   hosts: localhost
+   become: yes
+   roles:
+     - test-user

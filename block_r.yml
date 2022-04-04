@@ -1,0 +1,12 @@
+---
+ - hosts: localhost
+   tasks:
+     - block:
+         - name: Finding files
+           command: "ls /home/ansadmin"
+       rescue: 
+           - debug:
+               msg: "The given path is not exist"
+       always:
+         - debug:
+             msg: "this will always execute"

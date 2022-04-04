@@ -1,0 +1,11 @@
+---
+ - name: using vault
+   hosts: localhost
+   vars_files: secret.yml
+   tasks:
+     - name: using aws file
+       debug:
+         msg: 
+           - "this is accesskey {{access_key}}"
+           - "this is secretkey {{secret_key}}"
+
